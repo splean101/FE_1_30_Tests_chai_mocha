@@ -25,3 +25,9 @@ describe('valid data', () => {
     assert.isFalse(validateEmail('@email@gmail.com'), '@ the first character');
   });
 });
+
+describe('valid length', () => {
+  it('length more then 5 characters', () => {
+    assert.equal(validateEmail('12345'), false, 'length is too short');
+  });
+});
