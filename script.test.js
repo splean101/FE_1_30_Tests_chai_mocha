@@ -31,3 +31,28 @@ describe('valid length', () => {
     assert.equal(validateEmail('12345'), false, 'length is too short');
   });
 });
+
+// -----------3------------------
+
+describe('only one @', () => {
+  it('should contain only one @', () => {
+    assert.equal(
+      validateEmail('email@email@gmail.com'),
+      false,
+      'contain more then one @'
+    );
+  });
+});
+
+// -----------4------------------
+
+describe('wrong dot placement', () => {
+  it('should place the dots right', () => {
+    assert.equal(validateEmail('e.mail@gmail.com'), true, 'all right');
+    assert.isFalse(validateEmail('e.mail@gmailcom'), 'one dot is missed');
+    assert.isFalse(
+      validateEmail('e.mail.@gmail.com'),
+      "don't place dot before @"
+    );
+  });
+});
